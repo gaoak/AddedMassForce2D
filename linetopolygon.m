@@ -1,12 +1,13 @@
-function [vertices] = linetopolygon(data, curvetype)
+function [vertices, index] = linetopolygon(data, curvetype)
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 verts = data(:,1) + 1i*data(:,2);
+len = length(verts);
 if curvetype==1
-    len = length(verts);
-    vertices = [verts.', verts(len-1:-1:2).'];
+    index = [1:1:len len-1:-1:2]';
 else
-    vertices = verts.';
+    index = [1:1:len]';
 end
+vertices = verts(index);
 end
 
