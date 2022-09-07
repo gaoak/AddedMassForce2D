@@ -5,14 +5,14 @@ function [force, Mass] = calculateAddedMassForce(data, curvetype)
 % physics domain z; internel unit disk xi; externel unit disk zeta;
 % z = f_extermap(xi), xi = -1/zeta
 % =========on zeta plane======================
-% potential flow with static body: W(zeta) =  (U' zeta + U/zeta)
+% potential flow of the externel unit disk: W(zeta) =  (U1' zeta + U1/zeta)
 % =========on z plane=========================
-% potential flow is d w(z) / dz = d W(zeta) / d zeta at infinity far
-%     d w(z) / dz = d w/d zeta * d zeta/d xi / (dz / dxi), 
+% potential flow is w(z) = W(zeta), at infinity far
+%     d w(z) / dz = d W/d zeta * d zeta/d xi / (dz / dxi),
 % since dz / dxi = C/xi/xi at xi->0, (dz / dxi) / (d zeta / d xi) = C
-% we have, w(z) = C W(zeta)
+% we have, U1 = U * conj(C)
 % potential flow with moving body (negative direction): 
-%     w_k(z) = C W_k(z) - U' z, U_1=1, U_2=1i
+%     w_k(z) = W_k(z) - U' z, U_1=1, U_2=1i
 % w_k = phi_k + i psi_k, phi_k is the potential function we need
 %% create polygon
 [vertices, dataindex] = linetopolygon(data, curvetype); % in counter clockwise
